@@ -15,24 +15,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ inputs.workflows-ref }}
-          path: workflows
-          repository: zfael/gh-actions-workflow-called
-          token: ${{ secrets.GH_ACCESSTOKEN }}
+      # - name: Checkout
+      #   uses: actions/checkout@v3
+      #   with:
+      #     ref: ${{ inputs.workflows-ref }}
+      #     path: workflows
+      #     repository: zfael/gh-actions-workflow-called
+      #     token: ${{ secrets.GH_ACCESSTOKEN }}
 
-      - name: Build
-        id: build-action
-        uses: ./workflows/.github/actions/build-action
-        with:
-          name: "main"
-          project-type: "service"
+      # - name: Build
+      #   id: build-action
+      #   uses: ./workflows/.github/actions/build-action
+      #   with:
+      #     name: "main"
+      #     project-type: "service"
 
-      # - name: build
-      #   run: |
-      #     echo 'main/service build pipe'
+      - name: build
+        run: |
+          echo 'main/service build pipe'
   deploy:
     runs-on: ubuntu-latest
     steps:
