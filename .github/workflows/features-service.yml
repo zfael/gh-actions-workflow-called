@@ -1,6 +1,12 @@
 name: 'Build Feature Branches'
 
-on: workflow_call
+on: 
+  workflow_call:
+    inputs:
+      workflows-ref:
+        description: "ref of the centralized workflows repo that was specified in 'jobs.<name>.uses'"
+        required: true
+        type: string
 
 jobs:
   build:

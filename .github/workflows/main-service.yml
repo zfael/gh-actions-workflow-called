@@ -1,6 +1,12 @@
 name: 'Build Main Branch'
 
-on: workflow_call
+on: 
+  workflow_call:
+    inputs:
+      workflows-ref:
+        description: "ref of the centralized workflows repo that was specified in 'jobs.<name>.uses'"
+        required: true
+        type: string
 
 jobs:
   build:
@@ -9,9 +15,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.workflows-ref }}
+          path: workflows
+          repository: zfael/gh-actions-workflow-called
+          token: ${{ secrets.GH_ACCESSTOKEN }}
+
       - name: Build
         id: build-action
-        uses: ./.github/actions/build-action
+        uses: ./workflows/.github/actions/build-action
         with:
           name: "main"
           project-type: "service"

@@ -3,14 +3,22 @@ name: proxy
 on:
   workflow_call:
     inputs:
-      project_type:
+      project-type:
         required: true
         type: string
-        
+      workflows-ref:
+        description: "ref of the centralized workflows repo that was specified in 'jobs.<name>.uses'"
+        required: true
+        type: string
+
 jobs:
   fb_service:
     if: startsWith(github.ref_name, 'features')
     uses: "zfael/gh-actions-workflow-called/.github/workflows/features-service.yml@main"
+    with: 
+      workflows-ref: ${{ inputs.workflows-ref }}
   main_service:
     if: github.ref_name == 'main'
     uses: "zfael/gh-actions-workflow-called/.github/workflows/main-service.yml@main"
+    with: 
+      workflows-ref: ${{ inputs.workflows-ref }}
