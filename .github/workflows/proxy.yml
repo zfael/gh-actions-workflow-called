@@ -1,0 +1,16 @@
+name: proxy
+
+on:
+  workflow_call:
+    inputs:
+      project_type:
+        required: true
+        type: string
+        
+jobs:
+  fb_service:
+    if: startsWith(github.ref_name, 'features')
+    uses: "zfael/gh-actions-workflow-called/.github/workflows/features-service.yml@main"
+  main_service:
+    if: github.ref_name == 'main'
+    uses: "zfael/gh-actions-workflow-called/.github/workflows/main-service.yml@main"
