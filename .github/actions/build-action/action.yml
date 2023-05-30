@@ -1,0 +1,18 @@
+name: 'Build Action'
+inputs:
+  name:
+    required: false
+    description: "Name"
+  project-type:
+    required: false
+    description: "ProjectType"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+    - name: Step operations
+      id: step1
+      run: |
+          echo '${{ inputs.name }}/${{ inputs.project-type }} build pipe'

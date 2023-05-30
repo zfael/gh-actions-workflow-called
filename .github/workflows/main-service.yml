@@ -6,12 +6,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Build
+        id: build-action
+        uses: ./.github/actions/build-action
+        with:
+          name: "main"
+          project-type: "service"
 
-      - name: build
-        run: |
-          echo 'main/service build pipe'
+      # - name: Checkout
+      #   uses: actions/checkout@v3
+
+      # - name: build
+      #   run: |
+      #     echo 'main/service build pipe'
   deploy:
     runs-on: ubuntu-latest
     steps:
