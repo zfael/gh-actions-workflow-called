@@ -3,7 +3,7 @@ name: 'Build Main Branch'
 on: workflow_call
 
 jobs:
-  check-links:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -12,3 +12,12 @@ jobs:
       - name: build
         run: |
           echo 'main/service build pipe'
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: deploy
+        run: |
+          echo 'main/service deploy'
