@@ -1,11 +1,13 @@
 name: 'Build Main Branch'
 
-on: workflow_call
-    # inputs:
-    #   workflows-ref:
-    #     description: "ref of the centralized workflows repo that was specified in 'jobs.<name>.uses'"
-    #     required: true
-    #     type: string
+# on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      workflows-ref:
+        description: "ref of the centralized workflows repo that was specified in 'jobs.<name>.uses'"
+        required: false
+        type: string
 
 jobs:
   build:
