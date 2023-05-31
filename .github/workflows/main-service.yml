@@ -24,12 +24,12 @@ jobs:
           repository: zfael/gh-actions-workflow-called
           token: ${{ github.token }}
 
-      # - name: Build
-      #   id: build-action
-      #   uses: ./workflows/.github/actions/build-action
-      #   with:
-      #     name: "main"
-      #     project-type: "service"
+      - name: Build from local action
+        id: build-action
+        uses: ./workflows/.github/actions/build-action
+        with:
+          name: "main"
+          project-type: "service"
 
       - name: build
         run: |
