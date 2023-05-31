@@ -11,8 +11,10 @@ runs:
   using: "composite"
   steps:
     - name: Check out code
+      shell: bash
       uses: actions/checkout@v3
     - name: Step operations
+      shell: bash
       id: step1
       run: |
           echo '${{ inputs.name }}/${{ inputs.project-type }} build pipe'
