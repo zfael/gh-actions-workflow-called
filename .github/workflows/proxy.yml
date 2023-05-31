@@ -20,5 +20,5 @@ jobs:
   main_service:
     if: github.ref_name == 'main'
     uses: "zfael/gh-actions-workflow-called/.github/workflows/main-service.yml@main"
-    # with: 
-    #   workflows-ref: ${{ inputs.workflows-ref }}
+    with: 
+      workflows-ref: ${{ inputs.workflows-ref }}
