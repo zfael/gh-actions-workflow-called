@@ -16,13 +16,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # - name: Checkout
-      #   uses: actions/checkout@v3
-      #   with:
-      #     ref: ${{ inputs.workflows-ref }}
-      #     path: workflows
-      #     repository: zfael/gh-actions-workflow-called
-      #     token: ${{ secrets.GH_ACCESSTOKEN }}
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.workflows-ref }}
+          path: workflows
+          repository: zfael/gh-actions-workflow-called
+          token: ${{ github.token }}
 
       # - name: Build
       #   id: build-action
